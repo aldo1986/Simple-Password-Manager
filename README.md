@@ -25,11 +25,6 @@
 - `arboard` for clipboard access
 
 ---
-
-## 📷 Screenshot
-
-> _Insert screenshot here (e.g., `assets/screenshot.png`)_
-
 ---
 📦 Distribution
 This application is cross-platform but currently tested on:
