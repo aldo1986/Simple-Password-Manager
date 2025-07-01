@@ -15,4 +15,38 @@ pub fn build_cli() -> clap::Command{
                 .arg(Arg::new("password").required(true).help("Contraseña")),
         )
         .subcommand(Command::new("list").about("Listar todas las entradas"))
+
+        .subcommand(
+            Command::new("list")
+                .about("Lista las entradas guardadas"),
+        )
+        .subcommand(
+            Command::new("generate")
+                .about("Genera una contraseña segura")
+                .arg(
+                    Arg::new("length")
+                        .short('l')
+                        .long("length")
+                        .default_value("16")
+                        .help("Longitud de la contraseña generada"),
+                ),
+        )
+        .subcommand(
+            Command::new("copy")
+                .about("Copia al portapapeles la contraseña de un servicio")
+                .arg(
+                    Arg::new("service")
+                        .required(true)
+                        .help("Nombre del servicio"),
+                ),
+        )
+        .subcommand(
+            Command::new("delete")
+                .about("Elimina una entrada de servicio")
+                .arg(
+                    Arg::new("service")
+                        .required(true)
+                        .help("Nombre del servicio a eliminar"),
+                ),
+        )
 }

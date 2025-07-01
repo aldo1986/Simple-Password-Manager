@@ -2,8 +2,17 @@ use aes_gcm::{
     aead::{Aead, KeyInit},
     Aes256Gcm, Nonce,
 };
-use argon2::{password_hash::Salt, Argon2, PasswordHasher};
+use argon2::Argon2;
 use rand::{rngs::OsRng, RngCore};
+use rand::{distributions::Alphanumeric, Rng};
+
+pub fn generate_password(length: usize) -> String {
+    rand::thread_rng()
+        .sample_iter(&Alphanumeric)
+        .take(length)
+        .map(char::from)
+        .collect()
+}
 
 /// Deriva una clave de 256 bits desde la contraseña y el salt usando Argon2.
 pub fn derive_key(password: &str, salt: &[u8]) -> [u8; 32] {
